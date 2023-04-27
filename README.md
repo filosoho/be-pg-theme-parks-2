@@ -206,7 +206,7 @@ Create a utility function to arrange the rides data: `arrangeRidesData()`.
 
 It should take one argument, containing rides data, and return a _nested array_ to be passed as a second argument into `format()`.
 
-> _Use T.D.D._ :red_square: :green_square: :recycle:
+> _Use T.D.D._
 
 #### 8.2
 
@@ -220,7 +220,6 @@ This function will do the task of inserting the correct rides data into the data
 
 Now that we should have some rides data stored in our database, you can complete the `selectRidesByParkId` function in `models/rides.js`.
 
-> _Although we've just gone through all the effort of converting the `park_name`s to `park_id`s, it turns out our clients will want the names to be sent to them._ :woman_facepalming:
 
 ---
 
