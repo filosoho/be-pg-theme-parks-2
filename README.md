@@ -16,9 +16,9 @@ First you will need to create your database. To do this, run the `npm run setup-
 
 Now you have your database, you can create your database connection. To do this, you'll need to update the `connection.js` file. We have already made the file but you'll need to add the code.
 
-- Install [node-postgres](https://node-postgres.com/)
-- Create a new [connection pool](https://node-postgres.com/features/connecting) in the `db/connection.js` file
-- Export the connection pool so that it is available for use in other files
+-   Install [node-postgres](https://node-postgres.com/)
+-   Create a new [connection pool](https://node-postgres.com/features/connecting) in the `db/connection.js` file
+-   Export the connection pool so that it is available for use in other files
 
 ---
 
@@ -36,10 +36,10 @@ Update the `createParks` function to create a table called parks in your `seed.j
 
 The table will need:
 
-- park_id : Serial Primary Key
-- park_name : VarChar Not Null
-- year_opened: INT Not Null
-- annual_attendance: INT not null
+-   park_id : Serial Primary Key
+-   park_name : VarChar Not Null
+-   year_opened: INT Not Null
+-   annual_attendance: INT not null
 
 You can check this has worked by running `npm run seed` and checking the table looks as expected in the `psql` command line.
 
@@ -51,12 +51,14 @@ Next you'll need to create the `rides` table and add it to the seed function. Yo
 
 The table will need:
 
-- a serial primary key of `ride_id`,
-- a `park_id` key that will be an `INT` and need to reference the `parks` table's `park_id` column.
+-   a serial primary key of `ride_id`,
+-   a `park_id` key that will be an `INT` and need to reference the `parks` table's `park_id` column.
 
 It will also need: `ride_name`, `year_opened` and `votes` columns.
 
 Take a look at the data to decide on what data types to make them.
+
+> Hint: How could we future proof this table? What would happen to this table if a park were to be removed from the database?
 
 ---
 
@@ -72,8 +74,8 @@ npm install -D pg-format
 
 As you can see from the [documentation](https://github.com/datalanche/node-pg-format) for pg-format and the [NC Notes](https://notes.northcoders.com/courses/js-back-end/seeding-with-pg), the `format()` takes two arguments:
 
-- An SQL query string, which can contain a placeholder for the formatted values
-- A nested array of the values to be inserted for each record
+-   An SQL query string, which can contain a placeholder for the formatted values
+-   A nested array of the values to be inserted for each record
 
 > It's important to note here that `format()` returns a _string_. It does not make the query for us.
 
@@ -170,12 +172,12 @@ This is a utility function. Write some tests for this function in `utils.test.js
 
 ```js
 [
-  {
-    ride_name: "Tidal Wave",
-    year_opened: 2000,
-    park_name: "Thorpe Park",
-    votes: 1,
-  },
+    {
+        ride_name: "Tidal Wave",
+        year_opened: 2000,
+        park_name: "Thorpe Park",
+        votes: 1,
+    },
 ];
 ```
 
@@ -183,12 +185,12 @@ will become
 
 ```js
 [
-  {
-    ride_name: "Tidal Wave",
-    year_opened: 2000,
-    park_id: 1,
-    votes: 1,
-  },
+    {
+        ride_name: "Tidal Wave",
+        year_opened: 2000,
+        park_id: 1,
+        votes: 1,
+    },
 ];
 ```
 
@@ -220,6 +222,7 @@ This function will do the task of inserting the correct rides data into the data
 
 Now that we should have some rides data stored in our database, you can complete the `selectRidesByParkId` function in `models/rides.js`.
 
+> Make sure your query makes use of relevant queries to return all the ride's information including the park name.
 
 ---
 
@@ -265,7 +268,7 @@ Create and test a `getStallById` model. This function should return all the food
 
 ### Task 15
 
-Create and test an `updateStall` model that will add an extra food that stall serves.
+Create and test an `updateStallStock` model that will add an extra food type that the stall serves.
 
 ---
 
@@ -281,7 +284,7 @@ Create and test a `removeStall` model.
 
 Still going? 😮 Have a go at building any of the following models:
 
-- `createStall()`
-- `selectRides()`
-- update your `selectRides` function so it takes an optional minVotes parameter. If it's present, it should only select the rides with votes above the given number
-- update your `selectRides` function so it takes an optional openSince parameter. If it's present, it should only select the rides that opened after a given date
+-   `createStall()`
+-   `selectRides()`
+-   update your `selectRides` function so it takes an optional minVotes parameter. If it's present, it should only select the rides with votes above the given number
+-   update your `selectRides` function so it takes an optional openSince parameter. If it's present, it should only select the rides that opened after a given date
