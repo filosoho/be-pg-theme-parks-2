@@ -58,6 +58,8 @@ It will also need: `ride_name`, `year_opened` and `votes` columns.
 
 Take a look at the data to decide on what data types to make them.
 
+> Hint: How could we future proof this table? What would happen to this table if a park were to be removed from the database?
+
 ---
 
 ### Task 4
@@ -171,9 +173,9 @@ This is a utility function. Write some tests for this function in `utils.test.js
 ```js
 [
   {
-    ride_name: "Tidal Wave",
+    ride_name: 'Tidal Wave',
     year_opened: 2000,
-    park_name: "Thorpe Park",
+    park_name: 'Thorpe Park',
     votes: 1,
   },
 ];
@@ -184,7 +186,7 @@ will become
 ```js
 [
   {
-    ride_name: "Tidal Wave",
+    ride_name: 'Tidal Wave',
     year_opened: 2000,
     park_id: 1,
     votes: 1,
@@ -220,6 +222,7 @@ This function will do the task of inserting the correct rides data into the data
 
 Now that we should have some rides data stored in our database, you can complete the `selectRidesByParkId` function in `models/rides.js`.
 
+> Make sure your query makes use of relevant queries to return all the ride's information including the park name.
 
 ---
 
@@ -265,7 +268,7 @@ Create and test a `getStallById` model. This function should return all the food
 
 ### Task 15
 
-Create and test an `updateStall` model that will add an extra food that stall serves.
+Create and test an `updateStallStock` model that will add an extra food type that the stall serves.
 
 ---
 
@@ -283,5 +286,5 @@ Still going? 😮 Have a go at building any of the following models:
 
 - `createStall()`
 - `selectRides()`
-- update your `selectRides` function so it takes an optional minVotes parameter. If it's present, it should only select the rides with votes above the given number
-- update your `selectRides` function so it takes an optional openSince parameter. If it's present, it should only select the rides that opened after a given date
+- update your `selectRides` function so it takes an optional minVotes parameter. If it's present, it should only select the rides with votes above the given number.
+- update your `selectRides` function so it takes an optional openSince parameter. If it's present, it should only select the rides that opened after a given date.
