@@ -2,9 +2,6 @@
   "name": "be-pg-themeparks",
   "version": "1.0.0",
   "main": "app.js",
-  "devDependencies": {
-    "jest": "^26.6.3"
-  },
   "scripts": {
     "test": "PGDATABASE=theme_parks jest",
     "setup-db": "psql -f ./db/theme-parks.sql",
@@ -22,5 +19,7 @@
     "url": "https://github.com/northcoders/be-pg-themeparks/issues"
   },
   "homepage": "https://github.com/northcoders/be-pg-themeparks#readme",
-  "dependencies": {}
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
 }
