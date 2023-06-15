@@ -16,7 +16,7 @@ afterAll(() => {
   if (db.end) db.end();
 });
 
-describe("5. selectParks()", () => {
+describe("selectParks()", () => {
   test("should resolve with parks array", () => {
     return selectParks().then((parks) => {
       expect(parks).toBeInstanceOf(Array);
@@ -35,7 +35,7 @@ describe("5. selectParks()", () => {
   });
 });
 
-describe("9. selectRidesByParkId()", () => {
+describe("selectRidesByParkId()", () => {
   test("resolves with an array", () => {
     return selectRidesByParkId(3).then((rides) => {
       expect(rides).toBeInstanceOf(Array);
@@ -54,7 +54,7 @@ describe("9. selectRidesByParkId()", () => {
   });
 });
 
-describe("10. updateParkById()", () => {
+describe("updateParkById()", () => {
   it("returns the updated park", () => {
     const parkUpdates = {
       park_name: "Chessington Earth of Experiences",
@@ -92,7 +92,7 @@ describe("10. updateParkById()", () => {
   });
 });
 
-describe("11. removeParkById()", () => {
+describe("removeParkById()", () => {
   test("should return undefined", () => {
     return removeParkById(2).then((response) => {
       expect(response).toBeUndefined();
