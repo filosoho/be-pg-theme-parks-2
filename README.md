@@ -1,8 +1,10 @@
 # Theme Parks
 
-To get your tasks head to:
+This sprint covers two days worth of content.
 
-https://l2c.northcoders.com/courses/be/theme-parks
+Day 1 tasks: https://l2c.northcoders.com/courses/be/theme-parks-seeding
+
+Day 2 tasks: https://l2c.northcoders.com/courses/be/theme-parks-servers
 
 If you are pairing you will need to share your user ids with your partner.
 
