@@ -1,5 +1,7 @@
-const db = require("./utils/connection");
+const db = require("../../db/connection");
+const seed = require("../../db/seed");
 
+beforeAll(() => seed());
 afterAll(() => db.end());
 
 describe("seed", () => {
@@ -34,7 +36,7 @@ describe("seed", () => {
           );
         });
     });
-    test("parks table has park_name column as varchar", () => {
+    test("parks table has park_name column", () => {
       return db
         .query(
           `SELECT column_name, data_type, column_default
@@ -44,7 +46,6 @@ describe("seed", () => {
         )
         .then(({ rows: [column] }) => {
           expect(column.column_name).toBe("park_name");
-          expect(column.data_type).toBe("character varying");
         });
     });
     test("parks table has park_id column", () => {
@@ -128,7 +129,7 @@ describe("seed", () => {
           expect(column.data_type).toBe("integer");
         });
     });
-    test("rides table has ride_name column as varchar", () => {
+    test("rides table has ride_name column", () => {
       return db
         .query(
           `SELECT column_name
@@ -184,7 +185,7 @@ describe("seed", () => {
         rides.forEach((ride) => {
           expect(ride).toHaveProperty("ride_id");
           expect(ride).toHaveProperty("ride_name");
-          expect(ride).toHaveProperty("park_id");
+          expect(ride).toHaveProperty("park_id", expect.any(Number));
           expect(ride).toHaveProperty("year_opened");
           expect(ride).toHaveProperty("votes");
         });

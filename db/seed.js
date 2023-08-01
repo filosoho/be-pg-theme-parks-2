@@ -1,21 +1,21 @@
-const { parks, rides, stalls } = require('./data/index.js');
+const { parks, rides, stalls } = require("./data/index.js");
 
-const db = require('./connection');
+const db = require("./connection");
 
 function seed() {
   return db
-    .query('DROP TABLE IF EXISTS rides;')
+    .query("DROP TABLE IF EXISTS rides;")
     .then(() => {
-      return db.query('DROP TABLE IF EXISTS stalls;');
+      return db.query("DROP TABLE IF EXISTS stalls;");
     })
     .then(() => {
-      return db.query('DROP TABLE IF EXISTS foods;');
+      return db.query("DROP TABLE IF EXISTS foods;");
     })
     .then(() => {
-      return db.query('DROP TABLE IF EXISTS stalls_foods;');
+      return db.query("DROP TABLE IF EXISTS stalls_foods;");
     })
     .then(() => {
-      return db.query('DROP TABLE IF EXISTS parks;');
+      return db.query("DROP TABLE IF EXISTS parks;");
     })
     .then(() => {
       return createParks();
@@ -24,7 +24,7 @@ function seed() {
 
 function createParks() {
   /* Create your parks table in the query below */
-  return db.query('');
+  return db.query("");
 }
 
-module.exports = { seed };
+module.exports = seed;
