@@ -32,7 +32,7 @@ module.exports = [
   {
     stall_name: 'Ice creamz',
     park_name: 'Chessington World of Adventures',
-    foods_served: ['Ice Creams', 'Fro-Yo'],
+    foods_served: ['Ice Cream', 'Fro-Yo'],
   },
   {
     stall_name: 'Sloppy Tivolis',
