@@ -12,7 +12,7 @@ module.exports = [
   {
     stall_name: 'Thorpe ice',
     park_name: 'Thorpe Park',
-    foods_served: ['Ice Creams', 'Fro-Yo'],
+    foods_served: ['Ice Cream', 'Fro-Yo'],
   },
   {
     stall_name: 'Towering Burgers',
@@ -32,7 +32,7 @@ module.exports = [
   {
     stall_name: 'Ice creamz',
     park_name: 'Chessington World of Adventures',
-    foods_served: ['Ice Creams', 'Fro-Yo'],
+    foods_served: ['Ice Cream', 'Fro-Yo'],
   },
   {
     stall_name: 'Sloppy Tivolis',
