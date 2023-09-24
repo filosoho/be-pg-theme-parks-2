@@ -5,8 +5,7 @@
   "scripts": {
     "test-seed": "PGDATABASE=theme_parks jest seed.test.js",
     "setup-db": "psql -f ./db/theme-parks.sql",
-    "seed": "PGDATABASE=theme_parks node db/run-seed.js",
-    "sql-playground": "psql -f ./db/playground.sql"
+    "seed": "PGDATABASE=theme_parks node db/run-seed.js"
   },
   "repository": {
     "type": "git",
