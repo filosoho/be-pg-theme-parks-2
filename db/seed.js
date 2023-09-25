@@ -1,8 +1,6 @@
-const { parks, rides, stalls } = require("./data/index.js");
-
 const db = require("./connection");
 
-function seed() {
+function seed({ parks, rides, stalls }) {
   return db
     .query("DROP TABLE IF EXISTS rides;")
     .then(() => {
