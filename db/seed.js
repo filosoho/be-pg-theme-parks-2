@@ -25,6 +25,15 @@ function seed({ parks, rides, stalls }) {
     .then(() => {
       return insertParks(parks);
     })
+    .then(() => {
+      return db.query("SELECT * FROM parks;");
+    })
+    .then((result) => {
+      const parksData = result.rows;
+      const modifiedRides = modifyRidesData(rides, parksData);
+      // console.log(modifiedRides, "---> modifiedRides");
+      return insertRides(modifiedRides);
+    })
     .catch((err) => {
       console.error("Error during seeding:", err);
       throw err;
@@ -32,7 +41,6 @@ function seed({ parks, rides, stalls }) {
 }
 
 function createParks() {
-  /* Create your parks table in the query below */
   return db.query(
     "CREATE TABLE parks (park_id SERIAL PRIMARY KEY, park_name VARCHAR(50) NOT NULL, year_opened INTEGER NOT NULL, annual_attendence INTEGER NOT NULL);"
   );
@@ -48,30 +56,37 @@ function insertParks(parks) {
   const nestedParks = parks.map((park) => {
     return [park.park_name, park.year_opened, park.annual_attendance];
   });
-  console.log(nestedParks);
 
   const parksSqlString = format(
     `INSERT INTO parks(park_name, year_opened, annual_attendence) VALUES %L`,
     nestedParks
   );
-  console.log(parksSqlString);
   return db.query(parksSqlString);
 }
 
-function modifyRidesData() {}
+function modifyRidesData(rides, parksData) {
+  return rides.map((ride) => {
+    const park = parksData.find((p) => p.park_name === ride.park_name);
+    return {
+      ride_name: ride.ride_name,
+      year_opened: ride.year_opened,
+      park_id: park.park_id,
+      votes: ride.votes,
+    };
+  });
+}
 
-// function insertRides(rides) {
-//   const nestedRides = rides.map((ride) => {
-//     return [ride.ride_id, ride.park_id, ride.ride_name, ride.year_opened, ride.votes];
-//   });
-//   console.log(nestedParks);
+function insertRides(rides) {
+  const nestedRides = rides.map((ride) => {
+    return [ride.ride_name, ride.year_opened, ride.park_id, ride.votes];
+  });
 
-//   const parksSqlString = format(
-//     `INSERT INTO parks(park_name, year_opened, annual_attendence) VALUES %L`,
-//     nestedParks
-//   );
-//   console.log(parksSqlString);
-//   return db.query(parksSqlString);
-// }
+  const ridesSqlString = format(
+    `INSERT INTO rides(ride_name, year_opened, park_id, votes) VALUES %L`,
+    nestedRides
+  );
+
+  return db.query(ridesSqlString);
+}
 
 module.exports = seed;
